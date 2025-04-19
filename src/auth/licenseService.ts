@@ -208,6 +208,19 @@ export async function getLicenseInfo(licenseKey: string, hwid: string): Promise<
     }
   }
   
+  // Cihazın bu lisansla kayıtlı olup olmadığını kontrol et
+  const isDeviceRegistered = REGISTERED_DEVICES.some(
+    device => device.licenseKey === licenseKey && device.hwid === hwid
+  );
+  
+  // Eğer cihaz kayıtlı değilse ek bilgiyi işaretle
+  if (!isDeviceRegistered) {
+    return {
+      ...licenseInfo,
+      registeredDevices: REGISTERED_DEVICES.filter(d => d.licenseKey === licenseKey).length
+    };
+  }
+  
   return licenseInfo;
 }
 
