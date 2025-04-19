@@ -40,3 +40,33 @@
 .read-the-docs {
   color: #888;
 }
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #b0b0b0;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(91, 134, 229, 0.2);
+  border-radius: 50%;
+  border-top-color: #5B86E5;
+  animation: spin 1s infinite linear;
+  margin-bottom: 20px;
+}
+
+.loading-screen p {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
