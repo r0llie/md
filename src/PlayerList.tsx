@@ -55,12 +55,6 @@ const TEAM_MAPPINGS: TeamMapping[] = [
   { name: 'kaines', aliases: [], displayName: 'KAINES' }
 ];
 
-// Tüm arama için kullanılacak ekip isimleri ve kısaltmaları
-const ALL_TEAM_TAGS = [
-  ...TEAM_MAPPINGS.map(team => team.name), 
-  ...TEAM_MAPPINGS.flatMap(team => team.aliases)
-];
-
 // Character mapping for Turkish and special characters
 const charMap: Record<string, string> = {
   'İ': 'i', 'I': 'i', 'ı': 'i',
@@ -78,17 +72,6 @@ const charMap: Record<string, string> = {
 
 function normalizeText(str: string): string {
   return str.split('').map(char => charMap[char] || char.toLowerCase()).join('');
-}
-
-// İsimden ekip bulma
-function findTeamFromTag(tag: string): TeamMapping | null {
-  const normalizedTag = normalizeText(tag);
-  
-  // Ana isimle veya kısaltmalardan biriyle eşleşen ekibi bul
-  return TEAM_MAPPINGS.find(team => 
-    normalizeText(team.name) === normalizedTag || 
-    team.aliases.some(alias => normalizeText(alias) === normalizedTag)
-  ) || null;
 }
 
 // Oyuncu adından ekip bulma
