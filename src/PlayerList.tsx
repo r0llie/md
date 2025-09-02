@@ -138,7 +138,7 @@ export default function PlayerList() {
   // Fetch player data
   useEffect(() => {
     setLoading(true);
-    fetch("https://servers-frontend.fivem.net/api/servers/single/p3ze9y")
+    fetch("https://servers-frontend.fivem.net/api/servers/single/48o74q")
       .then(res => {
         if (!res.ok) {
           throw new Error("Sunucudan veri alınamadı.");
@@ -375,5 +375,6 @@ export default function PlayerList() {
     </div>
   );
 }
+
 
 
